@@ -13,7 +13,7 @@ import {
     Dashboard,
     Trip
 } from './pages';
-import './App.css'
+import './App.css';
 
 const App = () => {
     return (
@@ -28,7 +28,7 @@ const App = () => {
                 <PrivateRoute path="/flights" component={Flights} />
                 <PrivateRoute path="/hotels" component={Accommodation} />
                 <PrivateRoute path="/experiences" component={Experiences} />
-                <Route path="/trips/:tripId" component={Trip} />
+                <PrivateRoute path="/trips/:tripId" component={Trip} />
                 <NotFound />
             </Switch>
             {/* <Footer /> */}
