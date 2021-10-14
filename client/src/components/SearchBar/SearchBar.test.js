@@ -6,7 +6,7 @@ describe('SearchBar', () => {
 
     beforeEach(() => {
         getResultMock = jest.fn();
-        render(<SearchBar />);
+        renderWithReduxAndRouter(<SearchBar />);
     });
 
     test('it renders a form', () => {
