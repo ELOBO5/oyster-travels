@@ -16,7 +16,7 @@ const AttractionCard = ({ attraction, userReactions }) => {
                 <div className="experiences__card">
                     <img src={attraction.image} alt={attraction.name} />
                     <div className="experiences__card-content">
-                        <h2 className="attraction-card-header">{attraction.name}</h2>
+                        <h2>{attraction.name}</h2>
                         <p className="experiences__ranking">{attraction.ranking}</p>
                         <p>
                             <span>Rating:</span> {Number(attraction.rating)}
