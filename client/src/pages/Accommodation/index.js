@@ -4,17 +4,18 @@ import { useHistory } from 'react-router';
 import { useDispatch, useSelector } from 'react-redux';
 import { getPlacesData } from '../../apis/places';
 import { addHotels } from '../../redux/actions';
+import './style.css';
 
 const Accommodations = () => {
     const dispatch = useDispatch();
     const history = useHistory();
-    const { bounds, hotels, tripId } = useSelector(state => state);
+    const { bounds, hotels, tripId, destinationCity } = useSelector(state => state);
 
     useEffect(() => {
         const setAccommodationData = async () => {
             if (!bounds.sw && !bounds.ne) return;
             const hotels = await getPlacesData('hotels', bounds.sw, bounds.ne);
-            const filteredHotels = hotels.filter(hotel => hotel.photo && hotel.price);
+            const filteredHotels = hotels?.filter(hotel => hotel.photo && hotel.price);
             dispatch(addHotels(filteredHotels));
         };
 
@@ -41,18 +42,27 @@ const Accommodations = () => {
     };
 
     return (
-        <div>
-            {hotels?.map(hotel => (
-                <div key={hotel.location_id}>
-                    <img src={hotel.photo.images.large.url} alt={hotel.name} />
-                    <h2>{hotel.name}</h2>
-                    <p>Rating: {Number(hotel.rating)}</p>
-                    <p>Reviews: {hotel.num_reviews}</p>
-                    <p>Ranking: {hotel.ranking}</p>
-                    <p>Price range: {hotel.price}</p>
-                    <button onClick={() => addHotelToTrip(hotel)}>Add to Trip</button>
-                </div>
-            ))}
+        <div className="hotels">
+            <h1>Hotels in {destinationCity}</h1>
+            <div className="hotels__container">
+                {hotels?.map(hotel => (
+                    <div key={hotel.location_id} className="hotels__card">
+                        <img src={hotel.photo.images.large.url} alt={hotel.name} />
+                        <h2>{hotel.name}</h2>
+                        <p className="hotels__ranking"> {hotel.ranking}</p>
+                        <p>
+                            <span>Rating:</span> {Number(hotel.rating)}
+                        </p>
+                        <p>
+                            <span>Reviews:</span> {hotel.num_reviews}
+                        </p>
+                        <p>
+                            <span>Price Range:</span> {hotel.price}
+                        </p>
+                        <button onClick={() => addHotelToTrip(hotel)}>Add to Trip</button>
+                    </div>
+                ))}
+            </div>
             <button onClick={() => history.push('/experiences')}>View Experiences</button>
         </div>
     );

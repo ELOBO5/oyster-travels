@@ -1,13 +1,18 @@
 import React from 'react';
 import { Attractions, Restaurants } from '../../components';
+import { useSelector } from 'react-redux';
+import { useHistory } from 'react-router';
+import './styles.css'
 
 const Experiences = () => {
+    const history = useHistory();
+    const { tripCardId } = useSelector(state => state);
+    
     return (
         <div>
-            <h2>Restaurants</h2>
             <Restaurants />
-            <h2>Attractions</h2>
             <Attractions />
+            <button onClick={() => history.push(`/trips/${tripCardId}`)}>Go To Trip</button>
         </div>
     );
 };
