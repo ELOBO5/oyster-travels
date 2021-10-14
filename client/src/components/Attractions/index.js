@@ -7,7 +7,7 @@ import './styles.css';
 
 const Attractions = () => {
     const dispatch = useDispatch();
-    const { bounds, attractions, tripId } = useSelector(state => state);
+    const { bounds, attractions, tripId, destinationCity } = useSelector(state => state);
 
     useEffect(() => {
         const setAttractionData = async () => {
@@ -20,7 +20,7 @@ const Attractions = () => {
         setAttractionData();
     }, [bounds, dispatch]);
 
-    const addAttractionToTrip = async (attraction) => {
+    const addAttractionToTrip = async attraction => {
         const attractionInfo = {
             trip: tripId,
             category: 'attraction',
@@ -43,25 +43,40 @@ const Attractions = () => {
     };
 
     return (
-        <div className="d-flex flex-row flex-container">
-            {attractions?.map(attraction => (
-                <div className="container" key={attraction.location_id}>
-                    <img src={attraction.photo.images.large.url} alt={attraction.name} />
-                    <h2>{attraction.name}</h2>
-                    <p>Rating: {Number(attraction.rating)}</p>
-                    <p>Reviews: {attraction.num_reviews}</p>
-                    <p>Ranking: {attraction.ranking}</p>
-                    <p>Address: {attraction.address}</p>
-                    {/* <p>Description: {attraction.description}</p> */}
-                    {attraction.website && <a href={attraction.website}>Website</a>}
-                    <br/>
-                    {attraction.web_url && <a href={attraction.web_url}>Tripadvisor link</a>}
-                    <br/>
-                    <button onClick={() => addAttractionToTrip(attraction)}>
-                        Add to Trip
-                    </button>
-                </div>
-            ))}
+        <div className="experiences">
+            <h1>Attractions in {destinationCity}</h1>
+            <div className="experiences__container">
+                {attractions?.map(attraction => (
+                    <div className="experiences__card" key={attraction.location_id}>
+                        <img src={attraction.photo.images.large.url} alt={attraction.name} />
+                        <div className="experiences__card-content">
+                            <h2>{attraction.name}</h2>
+                            <p className="experiences__ranking">{attraction.ranking}</p>
+                            <p>
+                                <span>Rating: </span> {Number(attraction.rating)}
+                            </p>
+                            <p>
+                                <span>Reviews: </span> {attraction.num_reviews}
+                            </p>
+                            <p>
+                                <span>Address: </span> {attraction.address}
+                            </p>
+                            <div className="experiences__websites">
+                                {attraction.website && (
+                                    <a href={attraction.website}>Website</a>
+                                )}
+
+                                {attraction.web_url && (
+                                    <a href={attraction.web_url}>Tripadvisor link</a>
+                                )}
+                            </div>
+                            <button onClick={() => addAttractionToTrip(attraction)}>
+                                Add to Trip
+                            </button>
+                        </div>
+                    </div>
+                ))}
+            </div>
         </div>
     );
 };
