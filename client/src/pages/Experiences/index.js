@@ -9,10 +9,10 @@ const Experiences = () => {
     const { tripCardId } = useSelector(state => state);
     
     return (
-        <div>
+        <div className="experiences">
             <Restaurants />
             <Attractions />
-            <button onClick={() => history.push(`/trips/${tripCardId}`)}>Go To Trip</button>
+            <button className="experiences__btn" onClick={() => history.push(`/trips/${tripCardId}`)}>Go To Trip</button>
         </div>
     );
 };

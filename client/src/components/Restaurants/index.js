@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { CircularProgress } from '@material-ui/core';
 import { getPlacesData } from '../../apis/places';
 import { addRestaurants } from '../../redux/actions';
 import RestaurantDetail from '../RestaurantDetail';
@@ -19,19 +20,30 @@ const Restaurants = () => {
             );
             dispatch(addRestaurants(filteredRestaurants));
         };
-        
+
         setRestaurantData();
     }, [bounds, dispatch]);
 
     return (
-        <div className="experiences">
-            <h1>Restaurants in {destinationCity}</h1>
-            <div className="experiences__container">
-                {restaurants?.map(restaurant => (
-                    <RestaurantDetail restaurant={restaurant} key={restaurant.location_id} />
-                ))}
-            </div>
-        </div>
+        <>
+            {!restaurants.length ? (
+                <div className="center">
+                    <CircularProgress />
+                </div>
+            ) : (
+                <div className="experiences">
+                    <h1>Restaurants in {destinationCity}</h1>
+                    <div className="experiences__container">
+                        {restaurants?.map(restaurant => (
+                            <RestaurantDetail
+                                restaurant={restaurant}
+                                key={restaurant.location_id}
+                            />
+                        ))}
+                    </div>
+                </div>
+            )}
+        </>
     );
 };
 

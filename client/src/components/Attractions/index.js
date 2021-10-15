@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { CircularProgress } from '@material-ui/core';
 import { getPlacesData } from '../../apis/places';
 import { addAttractions } from '../../redux/actions';
 import AttractionDetail from '../AttractionDetail';
@@ -21,14 +22,22 @@ const Attractions = () => {
     }, [bounds, dispatch]);
 
     return (
-        <div className="experiences">
-            <h1>Attractions in {destinationCity}</h1>
-            <div className="experiences__container">
-                {attractions?.map(attraction => (
-                    <AttractionDetail attraction={attraction} />
-                ))}
-            </div>
-        </div>
+        <>
+            {!attractions.length ? (
+                <div className="center">
+                    <CircularProgress />
+                </div>
+            ) : (
+                <div className="experiences">
+                    <h1>Attractions in {destinationCity}</h1>
+                    <div className="experiences__container">
+                        {attractions?.map(attraction => (
+                            <AttractionDetail attraction={attraction} />
+                        ))}
+                    </div>
+                </div>
+            )}
+        </>
     );
 };
 
