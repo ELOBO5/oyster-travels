@@ -25,7 +25,7 @@ const AttractionDetail = ({ attraction }) => {
 
         try {
             const { data } = await axios.post(
-                'http://localhost:8000/api/experiences/',
+                'https://oystertravel.herokuapp.com/api/experiences/',
                 attractionInfo
             );
             setAttractionld(data.id);
@@ -37,7 +37,7 @@ const AttractionDetail = ({ attraction }) => {
 
     const removeAttractionFromTrip = async () => {
         try {
-            await axios.delete(`http://localhost:8000/api/experiences/${attractionId}/`);
+            await axios.delete(`https://oystertravel.herokuapp.com/api/experiences/${attractionId}/`);
             setAdded(false);
         } catch (error) {
             console.error('REMOVE ATTRACTION ', error);

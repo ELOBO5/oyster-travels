@@ -20,7 +20,7 @@ const useReactions = (experience, userReactions) => {
                 };
 
                 const { data } = await axios.post(
-                    'http://localhost:8000/api/experience_reactions/',
+                    'https://oystertravel.herokuapp.com/api/experience_reactions/',
                     reaction
                 );
                 setUserReaction(data);
@@ -32,7 +32,7 @@ const useReactions = (experience, userReactions) => {
         } else if (userReaction.like) {
             try {
                 const { data } = await axios.patch(
-                    `http://localhost:8000/api/experience_reactions/${userReaction.id}/`,
+                    `https://oystertravel.herokuapp.com/api/experience_reactions/${userReaction.id}/`,
                     { like: false }
                 );
                 setUserReaction(data);
@@ -44,7 +44,7 @@ const useReactions = (experience, userReactions) => {
         } else if (!userReaction.like || userReaction.dislike) {
             try {
                 const { data } = await axios.patch(
-                    `http://localhost:8000/api/experience_reactions/${userReaction.id}/`,
+                    `https://oystertravel.herokuapp.com/api/experience_reactions/${userReaction.id}/`,
                     { like: true, dislike: false }
                 );
                 setUserReaction(data);
@@ -67,7 +67,7 @@ const useReactions = (experience, userReactions) => {
                 };
 
                 const { data } = await axios.post(
-                    'http://localhost:8000/api/experience_reactions/',
+                    'https://oystertravel.herokuapp.com/api/experience_reactions/',
                     reaction
                 );
                 setUserReaction(data);
@@ -80,7 +80,7 @@ const useReactions = (experience, userReactions) => {
         } else if (userReaction.dislike) {
             try {
                 const { data } = await axios.patch(
-                    `http://localhost:8000/api/experience_reactions/${userReaction.id}/`,
+                    `https://oystertravel.herokuapp.com/api/experience_reactions/${userReaction.id}/`,
                     { dislike: false }
                 );
                 setUserReaction(data);
@@ -92,7 +92,7 @@ const useReactions = (experience, userReactions) => {
         } else if (!userReaction.dislike || userReaction.like) {
             try {
                 const { data } = await axios.patch(
-                    `http://localhost:8000/api/experience_reactions/${userReaction.id}/`,
+                    `https://oystertravel.herokuapp.com/api/experience_reactions/${userReaction.id}/`,
                     { dislike: true, like: false }
                 );
                 setUserReaction(data);

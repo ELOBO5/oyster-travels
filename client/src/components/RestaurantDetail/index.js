@@ -29,7 +29,7 @@ const RestaurantDetail = ({ restaurant }) => {
 
         try {
             const { data } = await axios.post(
-                'http://localhost:8000/api/experiences/',
+                'https://oystertravel.herokuapp.com/api/experiences/',
                 restaurantInfo
             );
             setRestaurantId(data.id);
@@ -41,7 +41,7 @@ const RestaurantDetail = ({ restaurant }) => {
 
     const removeRestaurantFromTrip = async () => {
         try {
-            await axios.delete(`http://localhost:8000/api/experiences/${restaurantId}/`);
+            await axios.delete(`https://oystertravel.herokuapp.com/api/experiences/${restaurantId}/`);
             setAdded(false);
         } catch (error) {
             console.error('REMOVE RESTAURANT ', error);

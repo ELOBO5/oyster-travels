@@ -27,7 +27,7 @@ const Trip = () => {
         const getCurrentUserReactions = async () => {
             const currentUserId = Number(localStorage.getItem('user_id'));
             const { data } = await axios.get(
-                'http://localhost:8000/api/experience_reactions/'
+                'https://oystertravel.herokuapp.com/api/experience_reactions/'
             );
             const userReactions = await data?.filter(
                 reaction => reaction.user === currentUserId
@@ -41,7 +41,7 @@ const Trip = () => {
     useEffect(() => {
         const getTripInfo = async () => {
             try {
-                const { data } = await axios.get(`http://localhost:8000/api/trips/${tripId}/`);
+                const { data } = await axios.get(`https://oystertravel.herokuapp.com/api/trips/${tripId}/`);
                 setTrip(data);
                 setHotels(
                     data.experiences.filter(experience => experience.category === 'hotel')

@@ -14,7 +14,7 @@ const useReactionInfo = (experience, userReactions) => {
     useEffect(() => {
         const getReactionInfo = async () => {
             try {
-                const { data } = await axios.get(`http://localhost:8000/api/experiences/${experience.id}/`);
+                const { data } = await axios.get(`https://oystertravel.herokuapp.com/api/experiences/${experience.id}/`);
 
                 const currentUserId = Number(localStorage.getItem('user_id'));
                 const userHasLiked = data.reactions.find(reaction => reaction.like && reaction.user === currentUserId);

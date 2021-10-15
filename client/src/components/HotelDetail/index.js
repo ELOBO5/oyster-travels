@@ -22,7 +22,7 @@ const HotelDetail = ({ hotel }) => {
         };
 
         try {
-            const { data } = await axios.post('http://localhost:8000/api/experiences/', hotel);
+            const { data } = await axios.post('https://oystertravel.herokuapp.com/api/experiences/', hotel);
             setHotelld(data.id);
             setAdded(true);
         } catch (error) {
@@ -32,7 +32,7 @@ const HotelDetail = ({ hotel }) => {
 
     const removeHotelFromTrip = async () => {
         try {
-            await axios.delete(`http://localhost:8000/api/experiences/${hotelId}/`);
+            await axios.delete(`https://oystertravel.herokuapp.com/api/experiences/${hotelId}/`);
             setAdded(false);
         } catch (error) {
             console.error('REMOVE HOTEL ', error);

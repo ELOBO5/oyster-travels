@@ -44,7 +44,7 @@ function SearchBar() {
         };
         const token = localStorage.getItem('access_token');
 
-        const { data } = await axios.post('http://localhost:8000/api/trips/', formData, {
+        const { data } = await axios.post('https://oystertravel.herokuapp.com/api/trips/', formData, {
             headers: {
                 Authorization: `JWT ${token}`,
                 'Content-Type': 'application/json'

@@ -27,7 +27,7 @@ const CommentsForm = props => {
             };
 
             const { data } = await axios.post(
-                `http://localhost:8000/api/comments/`,
+                `https://oystertravel.herokuapp.com/api/comments/`,
                 commentData,
                 {
                     headers: {
