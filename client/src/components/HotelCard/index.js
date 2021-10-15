@@ -11,22 +11,30 @@ const HotelCard = ({ hotel, userReactions }) => {
     } = useReactionInfo(hotel, userReactions);
 
     return (
-        <div>
-            <img src={hotel.image} alt={hotel.name} />
-            <h2>{hotel.name}</h2>
-            <p>Rating: {Number(hotel.rating)}</p>
-            <p>Reviews: {hotel.review_count}</p>
-            {hotel.ranking && <p>Ranking: {hotel.ranking}</p>}
-            {hotel.price && <p>Price range: {hotel.price}</p>}
+        <div className="experiences">
+            <div className="experiences__container">
+                <div className="experiences__card">
+                    <img src={hotel.image} alt={hotel.name} />
+                    <div className="experiences__card-content">
+                        <h2>{hotel.name}</h2>
+                        <p>{hotel.ranking}</p>
+                        <p>Rating: {Number(hotel.rating)}</p>
+                        <p>Reviews: {hotel.review_count}</p>
+                        {hotel.price && <p>Price range: {hotel.price}</p>}
 
-            {/* Reactions */}
-            <div className="flex-row">
-                <span>{likeCount}</span>
-                <button onClick={handleLike}>{userHasLiked ? 'Unlike' : 'Like'}</button>
-                <span>{dislikeCount}</span>
-                <button onClick={handleDislike}>
-                    {userHasDisliked ? 'Neutral' : 'Dislike'}
-                </button>
+                        {/* Reactions */}
+                        <div className="flex-row">
+                            <span>{likeCount}</span>
+                            <button onClick={handleLike}>
+                                {userHasLiked ? 'Remove Upvote' : 'Upvote'}
+                            </button>
+                            <span>{dislikeCount}</span>
+                            <button onClick={handleDislike}>
+                                {userHasDisliked ? 'Remove Downvote' : 'Downvote'}
+                            </button>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     );

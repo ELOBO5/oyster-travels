@@ -64,14 +64,14 @@ const Trip = () => {
 
     return (
         <div className="trip-container">
-            <h1>{trip.destination}</h1>
+            {/* <h1>{trip.destination}</h1> */}
 
             {/* Trip Dates */}
-            <div className="flex-row">
+            {/* <div className="flex-row">
                 <Moment format="Do MMM YYYY">{trip.departureDate}</Moment>
                 <span> - </span>
                 <Moment format="Do MMM YYYY">{trip.returnDate}</Moment>
-            </div>
+            </div> */}
 
             {/* Hotels */}
             {hotels.length ? <h2>Hotels</h2> : null}

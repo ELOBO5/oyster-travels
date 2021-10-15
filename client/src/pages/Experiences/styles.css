@@ -2,6 +2,7 @@
     display: flex;
     flex-direction: column;
     position: relative;
+    overflow-x: scroll;
 }
 
 .experiences > h1 {
@@ -30,6 +31,7 @@
     border-radius: 10px;
     border: 1px solid rgb(168, 168, 168);
     height: 75rem;
+    text-align: left;
 }
 
 .experiences__card > img {
