@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useHistory } from 'react-router';
 import { useDispatch, useSelector } from 'react-redux';
+import { CircularProgress } from '@material-ui/core';
 import { getPlacesData } from '../../apis/places';
 import { addHotels } from '../../redux/actions';
 import HotelDetail from '../../components/HotelDetail';
@@ -23,15 +24,25 @@ const Accommodations = () => {
     }, [bounds, dispatch]);
 
     return (
-        <div className="hotels">
-            <h1>Hotels in {destinationCity}</h1>
-            <div className="hotels__container">
-                {hotels.map(hotel => (
-                    <HotelDetail hotel={hotel} key={hotel.location_id} />
-                ))}
-            </div>
-            <button onClick={() => history.push('/experiences')}>View Experiences</button>
-        </div>
+        <>
+            {!hotels.length ? (
+                <div className="center">
+                    <CircularProgress />
+                </div>
+            ) : (
+                <div className="hotels">
+                    <h1>Hotels in {destinationCity}</h1>
+                    <div className="hotels__container">
+                        {hotels.map(hotel => (
+                            <HotelDetail hotel={hotel} key={hotel.location_id} />
+                        ))}
+                    </div>
+                    <button onClick={() => history.push('/experiences')}>
+                        View Experiences
+                    </button>
+                </div>
+            )}
+        </>
     );
 };
 
