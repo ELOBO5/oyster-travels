@@ -39,18 +39,18 @@ const RestaurantCard = ({ restaurant, userReactions }) => {
                                 <a href={restaurant.website_link}>Website</a>
                             )}
                             {restaurant.tripadvisor_link && (
-                                <a href={restaurant.tripadvisor_link}>Tripadvisor link</a>
+                                <a href={restaurant.tripadvisor_link}>Tripadvisor</a>
                             )}
                         </div>
                         {/* Reactions */}
                         <div className="flex-row">
                             <span>{likeCount}</span>
                             <button onClick={handleLike}>
-                                {userHasLiked ? 'Unlike' : 'Like'}
+                                {userHasLiked ? 'Remove upvote' : 'Upvote'}
                             </button>
                             <span>{dislikeCount}</span>
                             <button onClick={handleDislike}>
-                                {userHasDisliked ? 'Neutral' : 'Dislike'}
+                                {userHasDisliked ? 'Remove downvote' : 'Downvote'}
                             </button>
                         </div>
                     </div>

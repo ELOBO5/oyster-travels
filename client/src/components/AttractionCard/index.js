@@ -34,17 +34,17 @@ const AttractionCard = ({ attraction, userReactions }) => {
                             )}
 
                             {attraction.tripadvisor_link && (
-                                <a href={attraction.tripadvisor_link}>Tripadvisor link</a>
+                                <a href={attraction.tripadvisor_link}>Tripadvisor</a>
                             )}
                         </div>
                         <div className="flex-row">
                             <span>{likeCount}</span>
                             <button onClick={handleLike}>
-                                {userHasLiked ? 'Unlike' : 'Like'}
+                                {userHasLiked ? 'Remove Upvote' : 'Upvote'}
                             </button>
                             <span>{dislikeCount}</span>
                             <button onClick={handleDislike}>
-                                {userHasDisliked ? 'Neutral' : 'Dislike'}
+                                {userHasDisliked ? 'Remove Downvote' : 'Downvote'}
                             </button>
                         </div>
                     </div>
