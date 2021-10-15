@@ -40,7 +40,6 @@ class Experience(models.Model):
     )
     name = models.CharField(max_length=200, null=False)
     address = models.CharField(max_length=500, null=True, blank=True)
-    description = models.TextField(null=True, blank=True)
     rating = models.DecimalField(default=0, decimal_places=1, max_digits=2)
     review_count = models.IntegerField(default=0)
     image = models.CharField(max_length=500)
