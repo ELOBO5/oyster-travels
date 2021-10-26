@@ -58,6 +58,23 @@ A fun travel planning app that anyone can use to look up hotels, restaurants and
 - Tested with Jest and Pytest.
 - Debug and final styling.
 - Deployed app on Heroku.
+  
+## Wins & Challenges
 
+### Wins
+- Working with Google Places and Travel Advisor APIs.
+- Users require a token to access private routes.
+- Users can comment/react to trip suggestions.
+  
+### Challenges
+- Using the Django REST framework for the first time.
+- Working with external APIs such as Aviation Stack.
+- Implementing auth with Django REST and React.
+- Testing with Django REST and external APIs.
+
+## Future Features
+- Users can search for and add flights to their trip card.
+- Friends can edit different elements of the trip.
+  
 ## Licence 
 * [License](https://opensource.org/licenses/mit-license.php)
